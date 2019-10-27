@@ -9,36 +9,48 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="main.css">
+        
+        
+        
+        <link rel="stylesheet" href="css/main.css">
+        <script type="text/javascript" src="js/clock.js"></script>
+        <script type="text/javascript" src="js/slider.js"></script>
         <title>Test page</title>
-
         <script>
-            function startTime() {
-            var today = new Date();
-            var h = today.getHours();
-            var m = today.getMinutes();
-            var s = today.getSeconds();
-            document.getElementById('Clock').innerHTML = h + ":" + m + ":" + s;
-            var t = setTimeout(startTime, 500);
-            } 
-            function checkTime(i) {
-            if (i < 10) {i = "0" + i};
-            return i;
-            }  
+            $("#slideshow > div:gt(0)").hide();
 
-        </script>     
-
+            setInterval(function() {
+            $('#slideshow > div:first')
+                .next()
+                .end()
+                .appendTo('#slideshow');
+            }, 3000);
+        </script>
     </head>
 
     <body onload="startTime()">
         <div class="Main">
-            <div class="Pone">
+            <div class="box Text-cw Plat-size">
                 <p>PLATFORM 1</p>
             </div>
-            <div class="Main-data">
-
+            <div class="box Text-cw">
+                <p class="Status">Status:</p>
+                <p class="Open">CLOSED</p>
             </div>
-
+            <div class="box">
+                <div class="slider Pone" id="main-slider">
+                    <div class="slider-wrapper">
+                        <img src="img/p1.png" alt="First" class="slide" />
+                        <img src="img/p2.png" alt="Second" class="slide" />
+                        <img src="img/p3.png" alt="Third" class="slide" />
+                    </div>
+                </div>	   
+            </div>
+            <div class="Main-data">
+                <div class="Text-cw w-tex push-d">
+                    <p>NOT TAKING PASSENGERS</p>
+                </div>
+            </div>
             <div id="Clock"></div>
         </div>
     </body>
